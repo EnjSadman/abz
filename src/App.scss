@@ -1,0 +1,58 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,500;0,700;1,500&display=swap");
+@import './utils/vars.scss';
+@import './utils/mixins.scss';
+
+html {
+  font-family: 'Nunito', sans-serif;
+}
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 328px;
+  margin: 0 auto;
+
+  @include onTablet {
+    max-width: 604px;
+  }
+
+  @include onDesktop {
+    max-width: 1024px;
+  }
+
+  @include onHiResDesktop {
+    max-width: 1170px;
+  }
+}
+
+.container--full {
+  max-width: 100%;
+
+  @include onHiResDesktop {
+    max-width: 1170px;
+  }
+}
+
+.button {
+  width: 100px;
+  height: 34px;
+
+  font-size: $standart_font_size;
+
+  border: none;
+  border-radius: 80px;
+
+  background-color: $main_color_yellow;
+
+
+  &:hover {
+    background-color: $secondary_color_yellow;
+  }
+
+  &:disabled {
+    background-color: $main_color_gray;
+  }
+}
