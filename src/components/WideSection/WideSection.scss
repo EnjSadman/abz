@@ -10,15 +10,13 @@
   background-position: center;
   background-size: cover;
 
+  margin-bottom: 140px;
+
   @include onDesktop {
     height: 650px;
   }
 
   &__heading {
-
-    font-size: 40px;
-    font-weight: 400;
-    line-height: 40px;
     color: white;
 
     margin-bottom: 21px;

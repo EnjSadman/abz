@@ -13,6 +13,7 @@ module.exports = {
     semi: 0,
     'no-proto': 0,
     'no-unused-vars': 0,
+    'no-console': 1,
 
     // TypeScript
     '@typescript-eslint/no-unused-vars': ['error'],
@@ -20,6 +21,8 @@ module.exports = {
     '@typescript-eslint/explicit-module-boundary-types': 0,
     '@typescript-eslint/ban-types': 0,
     '@typescript-eslint/semi': ['error'],
+    'import/extensions': 0,
+    'import/no-unresolved': 0,
   },
   parser: '@typescript-eslint/parser',
   plugins: [

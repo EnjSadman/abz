@@ -8,6 +8,13 @@
   font-family: 'Nunito', sans-serif;
 }
 
+h1 {
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 40px;
+  text-align: center;
+}
+
 .container {
   max-width: 328px;
   margin: 0 auto;
@@ -33,9 +40,14 @@
   }
 }
 
+.main_content {
+  background-color: $main_color_gray;
+}
+
 .button {
   width: 100px;
   height: 34px;
+  cursor: pointer;
 
   font-size: $standart_font_size;
 

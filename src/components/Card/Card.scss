@@ -1,0 +1,25 @@
+.card {
+  padding: 20px;
+  display: flex;
+  background-color: white;
+  flex-direction: column;
+  border-radius: 15px;
+  align-items: center;
+  margin-bottom: 20px;
+  line-height: 26px;
+
+  &:last-of-type {
+    margin-bottom: 50px;
+  }
+
+  &__photo {
+    width: 70px;
+    height: 70px;
+    border-radius: 100%;
+    margin-bottom: 20px;
+  }
+
+  &__name {
+    margin-bottom: 20px;
+  }
+}
