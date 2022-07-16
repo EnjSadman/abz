@@ -1,6 +1,6 @@
 /// <reference types="react-scripts" />
 
-export interface serverResponse {
+export interface ServerResponse {
   success: boolean,
   page: number,
   total_pages: number,

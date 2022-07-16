@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactTooltip from 'react-tooltip';
 import './Card.scss';
 
@@ -57,10 +57,22 @@ export const Card : React.FC<Props> = ({
   email,
   phone,
 }) => {
+  const [image, setImage] = useState(imageUrl);
+
+  useEffect(() => {
+    const imgChecker = async () => {
+      fetch(imageUrl).catch(_err => {
+        setImage('images/photo-cover.png');
+      });
+    };
+
+    imgChecker();
+  }, []);
+
   return (
     <div className="card">
       <img
-        srcSet={`${imageUrl}, ../../images/photo-cover.png`}
+        src={`${image}`}
         alt={`${name}`}
         className="card__photo"
       />
