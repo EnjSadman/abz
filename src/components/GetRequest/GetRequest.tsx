@@ -14,8 +14,12 @@ export const GetRequest : React.FC = () => {
       if (currentFetchLocation !== null) {
         const result = await serverRequest(currentFetchLocation);
 
+        result.users.sort(
+          (a : User, b : User) => b.registration_timestamp - a.registration_timestamp,
+        );
+
         setGetResult(result);
-        setUsersFromServer([...usersFromServer, ...result.users]);
+        setUsersFromServer([...result.users]);
       }
     };
 

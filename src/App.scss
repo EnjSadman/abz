@@ -62,6 +62,8 @@ h1 {
   }
 
   &:disabled {
-    background-color: $main_color_gray;
+    color: white;
+    background-color: $button_disabled;
+    cursor: no-drop;
   }
 }

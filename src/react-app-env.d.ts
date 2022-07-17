@@ -14,6 +14,11 @@ export interface Links {
   prev_url: string | null,
 }
 
+export interface Positions {
+  id: number;
+  name: string;
+}
+
 export interface User {
   id: string,
   name: string,
