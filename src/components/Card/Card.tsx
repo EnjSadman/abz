@@ -11,7 +11,7 @@ interface Props {
 }
 
 function toolTiper(someString : string, className : string) {
-  if (className === 'card__phone') {
+  if (className.includes('card__phone')) {
     const redactedString = `${someString.slice(0, 3)} (${someString.slice(3, 6)}) ${someString.slice(6, 9)} ${someString.slice(9, 11)} ${someString.slice(11, 13)}`;
 
     return (
@@ -37,15 +37,22 @@ function toolTiper(someString : string, className : string) {
 
   return (
     <>
+      <ReactTooltip
+        id={temp}
+        place="bottom"
+        arrowColor="transparent"
+        backgroundColor="rgba(0, 0, 0, 0.87)"
+      >
+        {someString}
+      </ReactTooltip>
       <p
+        data-tip
+        data-for={temp}
         className={`${className}`}
-        data-tip={someString}
       >
         {temp}
       </p>
-      <ReactTooltip>
-        {someString}
-      </ReactTooltip>
+
     </>
   );
 }

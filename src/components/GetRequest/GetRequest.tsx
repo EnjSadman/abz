@@ -19,7 +19,9 @@ export const GetRequest : React.FC = () => {
         );
 
         setGetResult(result);
-        setUsersFromServer([...result.users]);
+        setUsersFromServer([...usersFromServer, ...result.users].sort(
+          (a : User, b : User) => b.registration_timestamp - a.registration_timestamp,
+        ));
       }
     };
 

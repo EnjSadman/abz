@@ -1,3 +1,5 @@
+@import '../../utils/mixins.scss';
+
 .card {
   padding: 20px;
   display: flex;
@@ -11,6 +13,33 @@
   &:last-of-type {
     margin-bottom: 50px;
   }
+
+  @include onTablet {
+    width: 344px;
+    margin-bottom: 29px;
+
+    &:last-of-type {
+      margin-bottom: 29px;
+    }
+  }
+
+  @include onDesktop {
+    width: 282px;
+    margin-bottom: 29px;
+
+    &:last-of-type {
+      margin-bottom: 29px;
+    }
+  }
+  @include onHiResDesktop {
+    width: 370px;
+    margin-bottom: 29px;
+
+    &:last-of-type {
+      margin-bottom: 29px;
+    }
+  }
+
 
   &__photo {
     width: 70px;

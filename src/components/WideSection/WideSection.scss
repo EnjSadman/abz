@@ -2,9 +2,8 @@
 
 .wide_section {
   text-align: center;
-  padding: 0 16px;
-  height: 500px;
   padding-top: 40px;
+  height: 500px;
 
   background-image: url('/images/field_mobile.png');
   background-position: center;
@@ -12,8 +11,40 @@
 
   margin-bottom: 140px;
 
+  @include onTablet {
+    padding-top: 89px;
+    background-image: url('/images/field_tablet.png');
+  }
+
   @include onDesktop {
+    background-image: url('/images/field_desktop.png');
+    padding-top: 164px;
     height: 650px;
+  }
+
+  @include onHiResDesktop {
+    background-image: url('/images/field_hires.png');
+    padding-top: 164px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 650px;
+  }
+
+  &_container {
+    margin: 0 auto;
+    width: 328px;
+
+    @include onTablet {
+      width: 380px;
+    }
+
+    @include onDesktop{
+      width: 380px;
+    }
+
+    @include onHiResDesktop {
+      width: 380px;
+    }
   }
 
   &__heading {

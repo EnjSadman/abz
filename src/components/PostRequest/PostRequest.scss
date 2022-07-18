@@ -1,4 +1,5 @@
 @import '../../utils/vars.scss';
+@import '../../utils/mixins.scss';
 
 .post {
 
@@ -22,7 +23,6 @@
       background-color: $main_color_gray;
       line-height: 24px;
       border-radius: 5px;
-      margin-bottom: 50px;
       font-size: 16px;
 
       &::placeholder {
@@ -31,6 +31,16 @@
 
       &:focus + .form__label--legend {
         display: block;
+      }
+
+      @include onTablet {
+        width: 380px;
+      }
+      @include onDesktop {
+        width: 380px;
+      }
+      @include onHiResDesktop{
+        width: 380px;
       }
     }
 
@@ -60,6 +70,16 @@
       font-size: 12px;
       line-height: 14px;
       margin-bottom: 25px;
+
+      @include onTablet {
+        width: 380px;
+      }
+      @include onDesktop {
+        width: 380px;
+      }
+      @include onHiResDesktop{
+        width: 380px;
+      }
     }
 
     &--radio {
@@ -70,6 +90,17 @@
       margin-bottom: 7px;
       font-size: 16px;
       line-height: 26px;
+
+      @include onTablet {
+        width: 380px;
+      }
+
+      @include onDesktop {
+        width: 380px;
+      }
+      @include onHiResDesktop{
+        width: 380px;
+      }
     }
 
     &--text {
@@ -79,6 +110,18 @@
     &--container {
       width: 100%;
       position: relative;
+      margin-bottom: 50px;
+
+      @include onTablet {
+        width: 380px;
+      }
+
+      @include onDesktop {
+        width: 380px;
+      }
+      @include onHiResDesktop{
+        width: 380px;
+      }
     }
 
     &--legend {
@@ -98,12 +141,27 @@
       width: 100%;
       margin-bottom: 10px;
       line-height: 26px;
+
+      @include onTablet {
+        width: 380px;
+      }
+
+      @include onDesktop {
+        width: 380px;
+      }
+      @include onHiResDesktop{
+        width: 380px;
+      }
     }
   }
 
   &__submit {
     margin-bottom: 100px;
   }
+}
+
+.legend_visible {
+  display: block;
 }
 
 .custom_radio {
@@ -139,6 +197,17 @@
   line-height: 26px;
   cursor: pointer;
 
+  @include onTablet {
+    width: 380px;
+  }
+
+  @include onDesktop {
+    width: 380px;
+  }
+  @include onHiResDesktop{
+    width: 380px;
+  }
+
   &_button {
     cursor: pointer;
     width: 83px;
@@ -149,6 +218,8 @@
 
   &_field {
     cursor: pointer;
+    overflow: hidden;
+    white-space: nowrap;
     width: 100%;
     border: 1px solid $border_color_gray;
     color: $text_color_gray;
@@ -163,6 +234,6 @@
   margin-bottom: 47px;
 }
 
-#phone {
+#phone_container {
   margin-bottom: 4px;
 }
