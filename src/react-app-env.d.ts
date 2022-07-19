@@ -29,3 +29,10 @@ export interface User {
   registration_timestamp: number,
   photo: string,
 }
+
+export interface PostUser {
+  name: string,
+  email: string,
+  phone: string,
+  position_id: number,
+}

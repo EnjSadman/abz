@@ -20,12 +20,18 @@ export const Header = () => {
           <button
             type="button"
             className="button header__button"
+            onClick={() => {
+              document.getElementById('users')?.scrollIntoView();
+            }}
           >
             Users
           </button>
           <button
             type="button"
             className="button header__button"
+            onClick={() => {
+              document.getElementById('post')?.scrollIntoView();
+            }}
           >
             Sign up
           </button>

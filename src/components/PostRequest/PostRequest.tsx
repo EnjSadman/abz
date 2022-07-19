@@ -6,7 +6,7 @@
 import classNames from 'classnames';
 import React, { useEffect, useState } from 'react';
 import { Positions } from '../../react-app-env';
-import { serverRequest } from '../api/api';
+import { serverRequest, postServerRequest } from '../api/api';
 import './PostRequest.scss';
 
 export const PostRequest : React.FC = () => {
@@ -24,9 +24,9 @@ export const PostRequest : React.FC = () => {
   const [phone, setPhone] = useState('');
   const [phoneIsValid, setPhoneIsValid] = useState(true);
 
-  const [uploadedPhoto, setUploadedPhoto] = useState<File>();
+  const [uploadedPhoto, setUploadedPhoto] = useState<File[]>([]);
   const [uploadedPhotoName, setUploadedPhotoName] = useState('Upload your photo');
-  const [isUploadValid, setUploadValid] = useState(true);
+  const [isUploadValid, setUploadValid] = useState(false);
 
   const [radioChecked, setRadioChecked] = useState<null | number>(null);
 
@@ -41,10 +41,11 @@ export const PostRequest : React.FC = () => {
   }, []);
 
   return (
-    <div className="post container">
+    <div className="post container" id="post">
       <h1 className="post__heading">Working with POST request</h1>
       <form
         className="post__form form"
+        id="post_form"
         onSubmit={(event) => {
           event.preventDefault();
 
@@ -59,32 +60,68 @@ export const PostRequest : React.FC = () => {
           if (!phone.match(validPhoneRegex)) {
             setPhoneIsValid(false);
           }
+
+          if (uploadedPhoto.length > 0) {
+            setUploadValid(true);
+          }
+
+          if (
+            nameIsValid
+            && emailIsValid
+            && phoneIsValid
+            && isUploadValid
+            && radioChecked !== null) {
+            const data = new FormData();
+
+            data.append('name', name);
+            data.append('email', email);
+            data.append('phone', phone);
+            data.append('position_id', `${radioChecked}`);
+            data.append('photo', uploadedPhoto[0]);
+
+            postServerRequest(data);
+          }
         }}
       >
         <label htmlFor="name" className="form__label--container">
           <input
-            className="form__input--text"
+            className={classNames(
+              'form__input--text',
+              { error: !nameIsValid },
+            )}
             type="text"
             placeholder="Your name"
             id="name"
             value={name}
+            onBlur={() => {
+              if (name.length < 2) {
+                setNameIsValid(false);
+              }
+            }}
             onChange={(event) => {
               setName(event.target.value);
-              if (nameIsValid && name.length > 2) {
+              if (name.length > 2) {
                 setNameIsValid(true);
               }
             }}
           />
           <label
             htmlFor="name"
-            className={classNames('form__label--legend', { legend_visible: name.length > 0 })}
+            className={classNames(
+              'form__label--legend',
+              { legend_visible: name.length > 0 },
+              { notValid: !nameIsValid },
+            )}
           >
             name
           </label>
         </label>
         <label htmlFor="name" className="form__label--container">
           <input
-            className="form__input--text"
+            className={classNames(
+              'form__input--text',
+              { error: emailIsValid },
+            )}
             type="text"
             placeholder="Email"
             id="email"
@@ -95,7 +132,11 @@ export const PostRequest : React.FC = () => {
           />
           <label
             htmlFor="email"
-            className={classNames('form__label--legend', { legend_visible: email.length > 0 })}
+            className={classNames(
+              'form__label--legend',
+              { legend_visible: email.length > 0 },
+              { error: emailIsValid },
+            )}
           >
             email
           </label>
@@ -107,7 +148,6 @@ export const PostRequest : React.FC = () => {
             type="text"
             placeholder="Phone"
             value={phone}
-            maxLength={13}
             onChange={(event) => {
               setPhone(event.target.value);
               if (phoneIsValid && (phone.length === 13)) {
@@ -156,6 +196,7 @@ export const PostRequest : React.FC = () => {
                   className="form__input--radio"
                   name="position"
                   id={singlePosition.name}
+                  value={singlePosition.id}
                   onChange={(event) => {
                     setRadioChecked(Number(event.target.value));
                   }}
@@ -208,19 +249,22 @@ export const PostRequest : React.FC = () => {
                     if ((height >= 50) && (width >= 50)) {
                       correctSize = true;
                     }
-                  };
-                };
 
-                setUploadedPhotoName(event.target.files[0].name);
-                if (
-                  isUploadValid
-                  && event.target.files !== null
+                    if (
+                      event.target.files !== null
+                  && event.target.files.length > 0
                   && event.target.files[0].size <= 5242880
                   && correctSize
-                ) {
-                  setUploadedPhoto(event.target.files[0]);
-                  setUploadValid(true);
-                }
+                    ) {
+                      setUploadedPhotoName(event.target.files[0].name);
+                      setUploadedPhoto([...event.target.files]);
+                      setUploadValid(true);
+                    }
+                  };
+                };
+              } else {
+                setUploadedPhotoName('Upload your photo');
+                setUploadValid(false);
               }
             }}
           />
@@ -228,7 +272,12 @@ export const PostRequest : React.FC = () => {
         <button
           type="submit"
           className="button form__submit"
-          disabled={(!name || !email || !phone || !radioChecked || !(uploadedPhoto !== undefined))}
+          disabled={(
+            name.length < 2
+            || email.length < 2
+            || phone.length < 2
+            || (radioChecked === null)
+            || !(isUploadValid))}
         >
           Sign up
         </button>

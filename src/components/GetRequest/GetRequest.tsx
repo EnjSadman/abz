@@ -29,7 +29,7 @@ export const GetRequest : React.FC = () => {
   }, [currentFetchLocation]);
 
   return (
-    <div className="container get">
+    <div className="container get" id="users">
       <h1 className="get__heading">Working with GET request</h1>
       {usersFromServer.length > 0 && usersFromServer.map(singleUser => (
         <Card

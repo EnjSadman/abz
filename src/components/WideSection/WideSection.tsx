@@ -18,6 +18,9 @@ export const WideSection: React.FC = () => {
         <button
           type="button"
           className="button"
+          onClick={() => {
+            document.getElementById('post')?.scrollIntoView();
+          }}
         >
           Sign up
         </button>
