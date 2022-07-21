@@ -1,5 +1,3 @@
-import { PostUser } from '../../react-app-env';
-
 const BASE_URL = 'https://frontend-test-assignment-api.abz.agency/api/v1/';
 
 export const serverRequest = async (specify : string) => {
@@ -8,7 +6,6 @@ export const serverRequest = async (specify : string) => {
   return result.json();
 };
 
-// eslint-disable-next-line consistent-return
 export async function postServerRequest(userBody: FormData) {
   const token = await serverRequest('token');
 
@@ -21,5 +18,5 @@ export async function postServerRequest(userBody: FormData) {
       body: userBody,
     });
 
-  return result.json();
+  return (result.status);
 }

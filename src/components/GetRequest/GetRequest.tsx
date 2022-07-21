@@ -4,10 +4,19 @@ import { serverRequest } from '../api/api';
 import { Card } from '../Card/Card';
 import './GetRequest.scss';
 
-export const GetRequest : React.FC = () => {
+interface Props {
+  serverResponse : number | null,
+}
+
+export const GetRequest : React.FC<Props> = ({ serverResponse }) => {
   const [usersFromServer, setUsersFromServer] = useState<User[]>([]);
   const [currentFetchLocation, setCurrentFetchLocation] = useState<string | null>('users?page=1&count=6');
   const [getResult, setGetResult] = useState<ServerResponse>();
+
+  useEffect(() => {
+    setUsersFromServer([]);
+    setCurrentFetchLocation('users?page=1&count=6');
+  }, [serverResponse]);
 
   useEffect(() => {
     const fetcher = async () => {
@@ -22,6 +31,7 @@ export const GetRequest : React.FC = () => {
         setUsersFromServer([...usersFromServer, ...result.users].sort(
           (a : User, b : User) => b.registration_timestamp - a.registration_timestamp,
         ));
+        setCurrentFetchLocation(null);
       }
     };
 

@@ -24,6 +24,8 @@ module.exports = {
     '@typescript-eslint/semi': ['error'],
     'import/extensions': 0,
     'import/no-unresolved': 0,
+    'jsx-a11y/label-has-associated-control': 0,
+    'jsx-a11y/label-has-for': 0,
   },
   parser: '@typescript-eslint/parser',
   plugins: [

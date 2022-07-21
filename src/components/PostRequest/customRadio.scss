@@ -1,0 +1,24 @@
+.custom_radio {
+  border-radius: 100%;
+  border: 1px solid $border_color_gray;
+  position: absolute;
+  left : 0px;
+  width: 20px;
+  height: 20px;
+  background-color: $main_color_gray;
+  cursor: pointer;
+
+  &::after {
+    display: none;
+    content: '';
+    position: absolute;
+    background-color: $main_color_blue;
+    height: 10px;
+    width: 10px;
+    border-radius: 100%;
+    top: 4px;
+    left: 4px;
+    right: 4px;
+    bottom: 4px;
+  }
+}

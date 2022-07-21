@@ -1,0 +1,12 @@
+.post {
+
+  &__heading {
+    margin-bottom: 50px;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
