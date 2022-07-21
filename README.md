@@ -1,9 +1,19 @@
-# React TypeScript Starter Pack
+This was done as test task for abz.agency
 
-To use this template click `Use this template`
+------------------------------------------------------
 
-### Available Scripts
+DEMO
 
-`Deploy` - available to deploy your application to gh-pages
+[DEMO LINK](https://enjsadman.github.io/)
 
-`SCSS Preprocessor` - available to write your styles with modern style language
+------------------------------------------------------
+
+FOR LOCAL DEPLOY
+
+```
+1. npm i
+2. npm start
+3. open your browser at http://localhost:3000
+```
+
+------------------------------------------------------
