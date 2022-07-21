@@ -5,7 +5,7 @@
   padding-top: 40px;
   height: 500px;
 
-  background-image: url('/images/field_mobile.png');
+  background-image: url('/images/field_mobile.webp');
   background-position: center;
   background-size: cover;
 
@@ -13,17 +13,17 @@
 
   @include onTablet {
     padding-top: 89px;
-    background-image: url('/images/field_tablet.png');
+    background-image: url('/images/field_tablet.webp');
   }
 
   @include onDesktop {
-    background-image: url('/images/field_desktop.png');
+    background-image: url('/images/field_desktop.webp');
     padding-top: 164px;
     height: 650px;
   }
 
   @include onHiResDesktop {
-    background-image: url('/images/field_hires.png');
+    background-image: url('/images/field_hires.webp');
     padding-top: 164px;
     margin-left: auto;
     margin-right: auto;

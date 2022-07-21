@@ -345,7 +345,7 @@ export const PostRequest : React.FC<Props> = ({ serverResponse, setServerRespons
       )
         : (
           <img
-            src="../../images/sent.png"
+            src="../../images/sent.webp"
             alt="registration completed"
             className="sent_image"
           />
