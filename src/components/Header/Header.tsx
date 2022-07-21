@@ -7,7 +7,7 @@ export const Header = () => {
     <header>
       <div className="header container">
         <Link
-          to="https://enjsadman.github.io/abz/"
+          to="abz/"
           className="header__logo-link"
         >
           <img
