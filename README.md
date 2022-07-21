@@ -4,7 +4,7 @@ This was done as test task for abz.agency
 
 DEMO
 
-[DEMO LINK](https://enjsadman.github.io/)
+[DEMO LINK](https://enjsadman.github.io/abz/)
 
 ------------------------------------------------------
 
